@@ -16,7 +16,8 @@
         "livewire/livewire": "^2.7",
         "maatwebsite/excel": "^3.1",
         "nesbot/carbon": "^2.53",
-        "rappasoft/laravel-livewire-tables": "^2.15"
+        "rappasoft/laravel-livewire-tables": "^2.15",
+        "simplesoftwareio/simple-qrcode": "^4.2"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
