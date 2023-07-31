@@ -19,7 +19,22 @@ class InscriptionDatatable extends DataTableComponent
     {
         $this->setPrimaryKey('id_insc');
     }
+    public function bulkActions(): array
+    {
+        return [
+            'exportSelected' => 'Export',
+        ];
+    }
+    public function exportSelected()
+    {
+        foreach($this->getSelected() as $item)
+        {
+            $this->clearSelected();
+            //echo ($item.'<br>');
 
+            // These are strings since they came from an HTML element
+        }
+    }
     public function columns(): array
     {
 
@@ -33,31 +48,31 @@ class InscriptionDatatable extends DataTableComponent
             Column::make("Código unico", "codigo_unico")->searchable(),      
             Column::make("Fecha creación", "created_at"),
             Column::make("Fecha actualización", "updated_at")->sortable(),
-            ButtonGroupColumn::make('Actions')
-    ->attributes(function($row) {
-        return [
-            'class' => 'space-x-2',
-        ];
-    })
-    ->buttons([
-        LinkColumn::make('View') // make() has no effect in this case but needs to be set anyway
-            ->title(fn($row) => 'View ' . $row->name)
-            ->location(fn($row) => route('lista_certificados', $row))
-            ->attributes(function($row) {
-                return [
-                    'class' => 'underline text-blue-500 hover:no-underline',
-                ];
-            }),
-        LinkColumn::make('Edit')
-            ->title(fn($row) => 'Edit ' . $row->name)
-            ->location(fn($row) => route('lista_certificados', $row))
-            ->attributes(function($row) {
-                return [
-                    'target' => '_blank',
-                    'class' => 'underline text-blue-500 hover:no-underline',
-                ];
-            }),
-    ]),
+            /*ButtonGroupColumn::make('Actions')
+                ->attributes(function($row) {
+                    return [
+                        'class' => 'space-x-2',
+                    ];
+                })
+                ->buttons([
+                    LinkColumn::make('View') // make() has no effect in this case but needs to be set anyway
+                        ->title(fn($row) => 'View ' . $row->name)
+                        
+                        ->attributes(function($row) {
+                            return [
+                                'class' => 'underline text-blue-500 hover:no-underline',
+                            ];
+                        }),
+                    LinkColumn::make('Edit')
+                        ->title(fn($row) => 'Edit ' . $row->name)
+                        ->location(fn($row) => route('lista_certificados.reportPDF', $row))
+                        ->attributes(function($row) {
+                            return [
+                                'target' => '_blank',
+                                'class' => 'underline text-blue-500 hover:no-underline',
+                            ];
+                        }),
+            ]),*/
             
         ];
     }

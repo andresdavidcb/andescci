@@ -38,6 +38,7 @@ Route::group(['middleware' => ['auth', 'user']], function () {
 
     Route::get('/lista_certificados', ListaCertificadosMain::class)->name('lista_certificados');
     
+    
 });
 
 Route::get('/buscador', Buscador::class)->name('buscador')->middleware('auth');
