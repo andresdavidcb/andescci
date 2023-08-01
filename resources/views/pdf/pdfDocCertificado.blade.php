@@ -13,7 +13,7 @@
                 left: 11cm;
                 z-index: -1000;
             }
-
+            
             #barra {
                 position: absolute;
                 height: 800px;
@@ -25,7 +25,12 @@
 
             #logo {
                 height: 2.5cm;
-                top: 1.5cm;
+                top: 4cm;
+            }
+            #qr {
+                position: absolute;
+                top: 22.2cm;
+                right: 3cm;
             }
 
             td {
@@ -36,6 +41,8 @@
         </style>
     </head>
     <body>
+            <div id="qr">___________QR_______________
+            {!! QrCode::size(300)->generate('https://techvblogs.com/blog/generate-qr-code-laravel-9') !!}</div>
         <div>
             <table style="width:950px;font-family:sans-serif;margin-top:5em;position: absolute;">
                 <tr>

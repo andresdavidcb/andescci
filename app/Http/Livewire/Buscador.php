@@ -12,6 +12,7 @@ use App\Models\Inscripcion;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class Buscador extends Component
 {
@@ -217,9 +218,10 @@ class Buscador extends Component
             $empresa = $this->empresa;
             $calendario = $this->calendario;
             $curso = $this->curso;
-
+            $url = "http://localhost:8000/consultaCertificado/".$this->search;
+            //$qr = base64_encode(QrCode::format('png')->size(100)->generate($url));
             $pdf = App::make('dompdf.wrapper');
-            $pdf->loadView('pdf/pdfDocCertificado', compact('inscripcion', 'curso', 'alumno', 'empresa', 'calendario'));
+            $pdf->loadView('pdf/pdfDocCertificado', compact('inscripcion', 'curso', 'alumno', 'empresa', 'calendario','url'));
             $pdf->setPaper('letter');
             echo $pdf->stream();
         }, $this->alumno->nombre_alumno.' '.$this->alumno->apellido_paterno.' '.$this->alumno->apellido_materno.' - '.$this->curso->nombre_curso.'.pdf');
@@ -241,6 +243,7 @@ class Buscador extends Component
             $curso = $this->curso;
 
             $pdf = App::make('dompdf.wrapper');
+            
             $pdf->loadView('pdf/pdfDocCertificado', compact('inscripcion', 'curso', 'alumno', 'empresa', 'calendario'));
             $pdf->setPaper('letter');
             echo $pdf->stream();

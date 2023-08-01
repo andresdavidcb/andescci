@@ -23,7 +23,7 @@
                     </x-jet-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('buscador') }}" >
+                    <x-jet-nav-link href="{{ route('lista_certificados') }}" >
                         {{ __('CERTIFICADOS') }}
                     </x-jet-nav-link>
                 </div>
